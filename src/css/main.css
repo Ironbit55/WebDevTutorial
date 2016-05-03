@@ -111,7 +111,7 @@ div.timelineElement {
 
 
     background-position: center;
-    margin-bottom: 200px;
+    margin-bottom: 180px;
 
 }
 
@@ -141,7 +141,7 @@ div.timelineElement h3{
 
 
 
-    margin-top: 0px;
+    margin-top: -55px;
     margin-bottom: 0px;
 
 
@@ -150,6 +150,7 @@ div.timelineElement h3{
     text-align: center;
     background-image:  url(../img/realTitleBackground.png);
     background-size: 0%;
+
     clear: both;
 
 }
@@ -160,8 +161,8 @@ div.timelineElement h4 {
     margin-bottom: 0px;
 
     position: relative;
-
-
+    Display: inline;
+    float: right;
 
 }
 /*
@@ -182,7 +183,11 @@ div .timelineElement.right h2{
 
 }
 div .timelineElement.right h4{
-    text-align: right;
+    float: right;
+
+}
+div .timelineElement.left h4{
+    float: left;
 
 }
 

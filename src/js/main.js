@@ -63,10 +63,11 @@ function check_if_in_view(){
 
 
                     if ($(this).parent().is(".right")) {
+
                         $(this).animate(
                             {
                                 'background-size': '100%',
-                                //'margin-top' : '20px',
+                                'margin-top' : '0px',
                                 'opacity': '1'
                                 // to move it towards the left
                             }, 500,
@@ -82,7 +83,7 @@ function check_if_in_view(){
                         $(this).animate(
                             {
                                 'background-size': '100%',
-                                //'margin-top' : '20px',
+                                'margin-top' : '0px',
                                 'opacity': '1'
                                 // to move it towards the right
                             }, 500,
@@ -97,6 +98,15 @@ function check_if_in_view(){
 
 
                 }
+                if ($(this).is("h4")) {
+                    $(this).animate(
+                    {
+                        //'margin-bottom' : '20px',
+                        'opacity': '1'
+                    });
+
+                }
+
                 else
                     $(this).animate(
                         {
