@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Internet Protocol Suite</title>
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+
+    <div id = "topic-page">
+        <h1>Internet Protocol Suite</h1>
+        <p>
+            The internet protocol suit suite of communication protocols for use by computer networks, specifically the
+            internet. It is commonly known as TCP/IP as TCP (Transmission Control Protocol) and IP (Internet protocol) are
+            its most important protocols and were defined at the start of its creation. A crucial aspect in its design was]
+            that a network implementing it should easily be able to connect to other networks even if the networks were
+            radically different. This was achieved by the use of a computer called a router which would accept packets from
+            each network, convert them to the required format, using knowledge provided to It about the networks, and
+            forward the packets on to the other network based on the destination information stored in the packet.
+        </p>
+        <hr/>
+        <h2>Internet Protocol(IP)</h2>
+        <p>
+            The internet protocol is a communications protocol that uses <a target="_blank" href="Packet%20Switching.html" >packet switching</a> to route packets from the source
+            host to the destination host. The internet protocol defines the format of packets used by networks implementing
+            it as well as also handling IP addressing and routing. The internet protocol will assign each device using it
+            with a unique identifier known as an IP address. Hosts on the network are then responsible for routing packets
+            through the network to their destination using information in the header of each packet such as the IP address
+            of the source host and the destination host. The internet protocol is connectionless meaning packets sent from
+            the same communication session may arrive at their destination in the wrong order.
+            TCP was developed in conjunction with IP to address this issue.
+        </p>
+        <hr/>
+        <h2>Transmission Control Protocol(TCP) </h2>
+        <p>
+            The transmission control protocol is not a direct replacement of the Internet Protocol. It can more be thought
+            of as a wrapper for it. TCP can be used by an application without the application having to know anything about
+            the underlying communication protocol and how exactly it routes data i.e. how the internet protocol functions.
+            Packets sent through the Internet protocol can be lost, corrupted and delivered out of order. TCP detects and
+            corrects these problems without the application using it having to know they even occurred. The application can
+            then rely on the packets being delivered in the correct order and identical to the state they were in when
+            originally sent. Data to be transmitted by TCP is split into segments and given a TCP header. These segments are
+            then encapsulated into an IP packet to be sent by the Internet Protocol. Contained within the TCP header
+        </p>
+    </div>
+
+</body>
+</html>

@@ -96,6 +96,13 @@ h1 {
     text-align: center;
     color: white;
 }
+a{
+    color: white;
+}
+a:visited{
+    color:grey;
+}
+
 
 #timeline{
 
@@ -105,6 +112,23 @@ h1 {
 
 
     background-size: 2px auto, auto;
+
+}
+p{
+    color: white;
+    text-align: left;
+    padding-right: 7px;
+    padding-left: 7px;
+}
+h2{
+    color: white;
+    text-align: left;
+}
+hr{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 50px;
+    margin-bottom: 50px;
 
 }
 div.timelineElement {
@@ -122,7 +146,8 @@ div.timelineElement h2{
 
     margin-top: 0px;
 
-    margin-bottom: 0px;
+    /* leave gap below year date heading */
+    margin-bottom: 40px;
 
     color: white;
 
@@ -141,9 +166,10 @@ div.timelineElement h3{
 
 
 
-    margin-top: -55px;
+    margin-top: 0px;
     margin-bottom: 0px;
-
+    padding-right: 7px;
+    padding-left: 7px;
 
 
     color: white;
@@ -157,7 +183,8 @@ div.timelineElement h3{
 div.timelineElement h4 {
     color: white;
 
-    margin-top: 0px;
+    /*if we have a month date we don't want it to increase the gap between the year date and the title of the box */
+    margin-top: -12px;
     margin-bottom: 0px;
 
     position: relative;
@@ -201,8 +228,19 @@ div.timelineElement p{
     color: grey;
     margin-top: 0px;
 
-    height:100px;
+    height:72px;
+    overflow: hidden;
 
+    /*set animation properties for on hover changing height of paragraph box*/
+    transition-property: height;
+    transition-duration: 0.4s;
+    transition-timing-function: linear;
+
+
+}
+
+div.timelineElement p:hover{
+    height: 200px;
 }
 
 div.right {
@@ -215,15 +253,41 @@ div.center {
     margin-right : 30%;
     margin-left : 30%;
 }
+/*setting the size of the width of the timeline element box*/
 div .timelineElement.left > *{
     margin-right: 20%;
+    margin-left: 20%;
 }
 div .timelineElement.right > *{
     margin-left: 20%;
+    margin-right: 20%;
 }
 
 
+#topic-page {
 
+    margin-right: 10%;
+    margin-left: 10%;
+    background-image:  url(../img/titleBackground.png);
+
+}
+
+
+#topic-page h1{
+    background-image:  url(../img/realtitleBackground.png);
+}
+#topic-page h2 {
+    margin-left: 15%;
+    padding-top: 0px;
+
+}
+#topic-page p {
+    margin-left: 20%;
+    margin-right: 20%;
+    /*
+    padding-bottom: 50px;
+    */
+}
 
 
 

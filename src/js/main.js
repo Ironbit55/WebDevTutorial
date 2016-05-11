@@ -1,4 +1,5 @@
 //Cache reference to window and animation items
+var $timeLineElements= $(".timelineElement");
 var $animation_elements = $(".timelineElement").children();
 var $window = $(window);
 
@@ -7,10 +8,10 @@ $(window).on("load",function() {
     $animation_elements.each(function(){
         $(this).fadeTo(0,0);
     });
-
+    adjustHeadings();
     $window.trigger('scroll');
 
-
+    addIncreaseInfoBoxSizeButton();
 
 
 });
@@ -30,7 +31,7 @@ function check_if_in_view(){
                     if ($(this).parent().is(".right")) {
                         $(this).animate(
                             {
-                                'margin-left': '20%',
+                                'margin-left': '10%',
                                 'opacity': '1'
                                 // to move it towards the left
                             }, 500,
@@ -45,7 +46,7 @@ function check_if_in_view(){
                     if ($(this).parent().is(".left")) {
                         $(this).animate(
                             {
-                                'margin-right': '20%',
+                                'margin-right': '10%',
                                 'opacity': '1'
                                 // to move it towards the right
                             }, 500,
@@ -131,6 +132,29 @@ function check_if_in_view(){
         }
     });
 
+}
+//adjust size of timeLine element heading if it has no information / paragraph box
+function adjustHeadings(){
+    $timeLineElements.each(function() {
+        //select timeline divs that don't contain a p tag
+        if($(this).has("p").length == false) {
+            $(this).find("h3").css("padding-top", 25);
+            $(this).find("h3").css("padding-bottom", 25);
+            //$(this).find("h3").css("background-image", 'url(img/titleBackground.png)');
+        }
+    })
+}
+
+function addIncreaseInfoBoxSizeButton(){
+    $timeLineElements.each(function() {
+
+        var element = $(this).find("p");
+        //if our paragraph element has overflowed
+        if (element[0].scrollWidth >  element.innerWidth()) {
+            //add increase size button
+           element.after("<h3> test </h3>");
+        }
+})
 }
 /*
 $(window).on("load",function() {

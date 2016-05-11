@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Packet Switching</title>
+
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <div id = "topic-page">
+        <h1>Packet Switching</h1>
+        <p>Packet switching, like circuit switching before it, is a method to allow machines to communicate with each other.
+            A collection of machines or “nodes” which have the capability to communicate with each other is known as a network.
+            Packet switching and circuit switching are both methods which a network may use to pass data through the correct nodes
+            and links between nodes for the data to arrive at the correct destination.
+        </p>
+        <hr/>
+        <h2>Circuit Switching</h2>
+        <p> Circuit switching was the method used in the early telephone networks whereby when a call was made network operators
+            would have to use switches in the network to create a continuous circuit between the two parties in the call.
+            Once a connection is established it is exclusively available to the start and end nodes for the full duration of
+            their communication. In circuit switching once the connection is established the communication data will mindlessly
+            follow the path set up for it.
+        </p>
+        <hr/>
+        <h2>Package Switching</h2>
+        <p> In packet switching all data is split into chunks called packets. Each packet knows where its destination node
+            in the network is. As such the network does not have to create a specific route for any one packet. Each node
+            in the network can receive a packet and based on the information in the packets header, where the destination
+            information is stored, can send it on to a node in the network closer to the packets destination. This process
+            continues until the packet arrives at its destination. This method of routing means links in the network will be
+            shared by multiple packets from different communication sessions. As the route a packet takes is altered
+            dynamically packet switching in computer networks is crucial in making sure the full capacity of the network is
+            used. Packets can quickly and automatically be routed around areas of high congestion in the network. Similarly
+            packets can be easily routed around nodes that have failed. Thus increasing the robustness of a network.
+        </p>
+        <hr/>
+        <p>The change from Circuit switching as a method of communication to packet switching marks an important moment in
+            the history of the digital age. This technology enabled the widespread exchange of data and directly lead to the
+            rise of the internet and the World Wide Web. This is why it should be recognised as a key component in bringing
+            about the beginning of the information age.
+        </p>
+        <footer></footer>
+    </div>
+
+</body>
+</html>
