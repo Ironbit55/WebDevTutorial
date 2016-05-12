@@ -88,8 +88,10 @@ textarea {
    Author's custom styles
    ========================================================================== */
 body {
-
-    background: url("../img/noisy_net_@2X.png") center  #005fc4;
+    background-color: darkslateblue;
+    background-image: url("http://www.transparenttextures.com/patterns/triangles.png");
+    margin: 0px;
+    padding: 0px;
 }
 
 h1 {
@@ -102,7 +104,16 @@ a{
 a:visited{
     color:grey;
 }
+#home-page{
+    background-color: #14002b;
+    background-image: url("http://www.transparenttextures.com/patterns/triangles.png");
+    padding-top: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    height: 1000px;
 
+}
 
 #timeline{
 
@@ -110,7 +121,9 @@ a:visited{
         url("../img/timeline.png") repeat-y  center,
         url("../img/noisy_net_@2X.png") center  #005fc4;
 
-
+    padding-bottom: 200px;
+    padding-top: 0px;
+    margin-top: 0px;
     background-size: 2px auto, auto;
 
 }
@@ -130,7 +143,34 @@ hr{
     margin-top: 50px;
     margin-bottom: 50px;
 
+
 }
+#home-page h1{
+    color: white;
+    font-size: 600%;
+    /*text-align: center;*/
+
+    margin-top: 0px;
+    /*push text position down closer to middle of div */
+    padding-top: 300px;
+
+    /*translate towards center by width and height of text*/
+
+
+}
+#home-page h2{
+    color: #cccccc;
+    font-size: 500%;
+    text-align: center;
+
+    margin-top: 0px;
+
+
+
+
+    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */;
+}
+
 div.timelineElement {
 
 
@@ -165,8 +205,8 @@ div.timelineElement h2{
 div.timelineElement h3{
 
 
-
-    margin-top: 0px;
+    /* start this at higher than we actually want so we can animate it down*/
+    margin-top: -55px;
     margin-bottom: 0px;
     padding-right: 7px;
     padding-left: 7px;
@@ -184,7 +224,7 @@ div.timelineElement h4 {
     color: white;
 
     /*if we have a month date we don't want it to increase the gap between the year date and the title of the box */
-    margin-top: -12px;
+    margin-top: -42px;
     margin-bottom: 0px;
 
     position: relative;
@@ -228,7 +268,7 @@ div.timelineElement p{
     color: grey;
     margin-top: 0px;
 
-    height:72px;
+    height:78px;
     overflow: hidden;
 
     /*set animation properties for on hover changing height of paragraph box*/

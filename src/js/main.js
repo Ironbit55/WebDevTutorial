@@ -1,12 +1,12 @@
 //Cache reference to window and animation items
-var $timeLineElements= $(".timelineElement");
+var $timeLineBoxes= $(".timelineElement");
 var $animation_elements = $(".timelineElement").children();
 var $window = $(window);
 
 $(window).on("load",function() {
     $window.on('scroll', check_if_in_view);
     $animation_elements.each(function(){
-        $(this).fadeTo(0,0);
+        $(this).css("opacity", 0);
     });
     adjustHeadings();
     $window.trigger('scroll');
@@ -18,43 +18,64 @@ $(window).on("load",function() {
 
 function check_if_in_view(){
 
-    $animation_elements.each(function() {
+    // $animation_elements.(function() {
+    //     var objectBottom = $(this).offset().top + $(this).outerHeight();
+    //     var windowBottom = $(window).scrollTop() + $(window).innerHeight();
+    //
+    //     if (objectBottom < windowBottom) { //object comes into view (scrolling down)
+    //
+    //     }
+    //     else{
+    //         if ($(this).css("opacity")==1) {$(this).fadeTo(500,0);}
+    //     }
+    //
+    // });
+
+
+
+    $(".timelineElement").children().each(function() {
         var objectBottom = $(this).offset().top + $(this).outerHeight();
+        var objectTop =  $(this).offset().top;
         var windowBottom = $(window).scrollTop() + $(window).innerHeight();
 
         if (objectBottom < windowBottom) { //object comes into view (scrolling down)
             $(this).addClass("in-view");
-            if ($(this).css("opacity")==0) {
+            //we don't want to have to undo all the animations and show them again once they've already happened once
+            //because it'd be annoying to implement and also annoying to the user
+            //so we just fade them in and out on scroll
+            if ($(this).hasClass("finished-animation")) {
+
+                if($(this).css("opacity") <= 0.05){$(this).fadeTo(500, 1);}
+            }
+            else{
                 if ($(this).is("h2")) {
 
 
                     if ($(this).parent().is(".right")) {
                         $(this).animate(
                             {
+                                // to animate it moving towards the right
                                 'margin-left': '10%',
                                 'opacity': '1'
-                                // to move it towards the left
+
                             }, 500,
                             function () {
-                                //$(this).slideUp('fast');
-                                // once it's finished moving to the right, just
-                                // removes the the element from the display, you could use
-                                // `remove()` instead, or whatever.
+                                //finished animating
+                                $(this).addClass("finished-animation");
                             }
                         );
                     }
                     if ($(this).parent().is(".left")) {
                         $(this).animate(
                             {
+                                // to animate it moving towards the left
                                 'margin-right': '10%',
                                 'opacity': '1'
-                                // to move it towards the right
+
                             }, 500,
                             function () {
-                                //$(this).slideUp('fast');
-                                // once it's finished moving to the right, just
-                                // removes the the element from the display, you could use
-                                // `remove()` instead, or whatever.
+                                //finished animating
+                                $(this).addClass("finished-animation");
                             }
                         );
                     }
@@ -62,49 +83,30 @@ function check_if_in_view(){
                 }
                 if ($(this).is("h3")) {
 
+                    $(this).animate(
+                        {
+                            //animated to move down
+                            'background-size': '100%',
+                            'margin-top': '0px',
+                            'opacity': '1'
 
-                    if ($(this).parent().is(".right")) {
-
-                        $(this).animate(
-                            {
-                                'background-size': '100%',
-                                'margin-top' : '0px',
-                                'opacity': '1'
-                                // to move it towards the left
-                            }, 500,
-                            function () {
-                                //$(this).slideUp('fast');
-                                // once it's finished moving to the right, just
-                                // removes the the element from the display, you could use
-                                // `remove()` instead, or whatever.
-                            }
-                        );
-                    }
-                    if ($(this).parent().is(".left")) {
-                        $(this).animate(
-                            {
-                                'background-size': '100%',
-                                'margin-top' : '0px',
-                                'opacity': '1'
-                                // to move it towards the right
-                            }, 500,
-                            function () {
-                                //$(this).slideUp('fast');
-                                // once it's finished moving to the right, just
-                                // removes the the element from the display, you could use
-                                // `remove()` instead, or whatever.
-                            }
-                        );
-                    }
-
+                        }, 500,
+                        function () {
+                            $(this).addClass("finished-animation");
+                        }
+                    );
 
                 }
                 if ($(this).is("h4")) {
                     $(this).animate(
-                    {
-                        //'margin-bottom' : '20px',
-                        'opacity': '1'
-                    });
+                        {
+                            'margin-top': '-12px',
+                            'opacity': '1'
+                        }, 500,
+                        function () {
+                            $(this).addClass("finished-animation");
+                        }
+                    );
 
                 }
 
@@ -112,30 +114,43 @@ function check_if_in_view(){
                     $(this).animate(
                         {
 
-
+                            //fade elements in on scroll by default
                             'opacity': '1'
-                            // to move it towards the right
+
                         }, 500,
                         function () {
-                            //$(this).slideUp('fast');
-                            // once it's finished moving to the right, just
-                            // removes the the element from the display, you could use
-                            // `remove()` instead, or whatever.
+                            $(this).addClass("finished-animation");
                         }
                     );
 
             }
         }
-        else{
+
+        else if(objectTop > windowBottom){ //object comes fully out of view
             $(this).removeClass("in-view");
-            if ($(this).css("opacity")==1) {$(this).fadeTo(500,0);}
+            //fade out animation elements that have completed their animation in
+            if($(this).css("opacity") > 0.95 && $(this).hasClass("finished-animation")){$(this).css("opacity", 0)}
+
         }
     });
+
+    /*
+    $(".timelineElement").children(".finished-animation").each(function(){
+            if($(this).hasClass("in-view")) {
+                if($(this).css("opacity") == 0){$(this).fadeTo(500, 1);}
+            }
+            else
+                if($(this).css("opacity") == 1){$(this).fadeTo(500, 0);}
+        }
+
+    );
+    */
+
 
 }
 //adjust size of timeLine element heading if it has no information / paragraph box
 function adjustHeadings(){
-    $timeLineElements.each(function() {
+    $timeLineBoxes.each(function() {
         //select timeline divs that don't contain a p tag
         if($(this).has("p").length == false) {
             $(this).find("h3").css("padding-top", 25);
@@ -145,8 +160,9 @@ function adjustHeadings(){
     })
 }
 
+
 function addIncreaseInfoBoxSizeButton(){
-    $timeLineElements.each(function() {
+    $timeLineBoxes.each(function() {
 
         var element = $(this).find("p");
         //if our paragraph element has overflowed
@@ -156,6 +172,8 @@ function addIncreaseInfoBoxSizeButton(){
         }
 })
 }
+
+
 /*
 $(window).on("load",function() {
     var objectBottom = $(this).offset().top + $(this).outerHeight();
