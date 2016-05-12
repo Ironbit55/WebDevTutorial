@@ -100,7 +100,9 @@ function check_if_in_view(){
                 if ($(this).is("h4")) {
                     $(this).animate(
                         {
-                            'margin-top': '-12px',
+                            //leave this negative margin to compensate for the height of the text, we actually want
+                            // to pretend the text isn't there
+                            'margin-top': '-22px',
                             'opacity': '1'
                         }, 500,
                         function () {
